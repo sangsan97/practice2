@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <title>Homebase</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <ul class="nav navbar-nav">
+                <li><a class="navbar-brand bigbrand" href="{% url 'slide' %}">High Temperature Thermochemistry</a></li>
+                <li><a href="{% url 'about' %}">About Us</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'post_list' %}">Posts</a></li>
+                    <li><a href="{% url 'post_form' %}">New Post</a></li>
+                    <li><a href="{% url 'post_draft_list' %}">Drafts</a></li>
+                    <li><a href="{% url 'logout' %}">Log Out</a></li>
+                    <li>
+                        <a>Welcome: {{ user.username }}</a>
+                    </li>
+                {% else %}
+                    <li><a href="{% url 'post_list' %}">Posts</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
