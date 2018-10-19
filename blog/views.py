@@ -11,7 +11,7 @@ from django.utils import timezone
 # Create your views here.
 
 class SlideView(TemplateView):
-    template_name = 'blog/slide.html'
+    template_name = 'blog/slide2.html'
 
 class AboutView(TemplateView):
     template_name = 'blog/about.html'
@@ -46,8 +46,17 @@ def Signup(request):
 class PostListView(ListView):
     model = Post
 
+    #def get_queryset(self):
+    #    return Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+
     def get_queryset(self):
-        return Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+        return Post.objects.filter(where_to_status='post_list').order_by('-published_date')
+
+class PostList2View(ListView):
+    model = Post
+
+    def get_queryset(self):
+        return Post.objects.filter(where_to_status='post_list2').order_by('-published_date')
 
 def ModelFormUpload(request):
     if request.method == 'POST':

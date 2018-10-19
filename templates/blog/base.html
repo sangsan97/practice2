@@ -25,7 +25,8 @@
 
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'post_list' %}">Posts</a></li>
+                    <li><a href="{% url 'post_list' %}">Category 1</a></li>
+                    <li><a href="{% url 'post_list2' %}">Category 2</a></li>
                     <li><a href="{% url 'post_form' %}">New Post</a></li>
                     <li><a href="{% url 'post_draft_list' %}">Drafts</a></li>
                     <li><a href="{% url 'logout' %}">Log Out</a></li>

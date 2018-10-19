@@ -6,6 +6,7 @@ from django.conf import settings
 urlpatterns = [
     path('', views.SlideView.as_view(), name='slide'),
     path('post_list/', views.PostListView.as_view(), name='post_list'),
+    path('post_list2/', views.PostList2View.as_view(), name='post_list2'),
     path('about/', views.AboutView.as_view(), name='about'),
     path('login/', views.Signin, name='login'),
     path('logout/', views.Signout, name='logout'),

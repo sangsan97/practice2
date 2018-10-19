@@ -16,6 +16,11 @@ class Post(models.Model):
     published_date = models.DateTimeField(blank=True, null=True)
     photo = models.ImageField(blank=True, null=True)
     document = models.FileField(blank=True, null=True, upload_to='documents/')
+    where_to = [
+        ('post_list', 'Post List'),
+        ('post_list2', 'Post List2'),
+    ]
+    where_to_status = models.CharField(max_length=15, choices=where_to, default='post_list')
 
     def publish(self):
         self.published_date = timezone.now()
